@@ -2,12 +2,20 @@ const safeZoneModel = require("../models/SafeZone.js");
 
 const setSafeZone = async (req, res) => {
     var response = {
-      errMsgs: {},
       data: {},
     };
     console.log("set safe zone");
+    // console.log(req);
     var safeZone = req.body.safezone;
-    console.log("req : " + req.body);
+    // console.log("req : " + req.body);
+    
+    // console.log("req.body");
+    // console.log(req.body);
+    console.log("safeZone");
+    console.log(safeZone);
+
+    console.log("safeZone.green.lat");
+    console.log(safeZone.green.lat);
     // console.log("req 2 : "+JSON.stringify(req.body));
     if (safeZone != null) {
       try {
@@ -68,14 +76,17 @@ const setSafeZone = async (req, res) => {
       };
     }
   
+    console.log("response");
+    console.log(response);
     return response;
   };
 
   const getSafeZone = async (req, res) => {
     var response = {
-      errMsgs: {},
       data: {},
     };
+    
+    console.log("get safe zone");
 
     const green = await safeZoneModel.findOne({'safezone_type': "green"});
     const yellow = await safeZoneModel.findOne({'safezone_type': "yellow"});
