@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export const contactSchema = mongoose.Schema(
+const contactSchema = mongoose.Schema(
   {
     contact_id: {
       type: Number,
@@ -24,4 +24,5 @@ export const contactSchema = mongoose.Schema(
 );
 
 const contact = mongoose.model("contacts", contactSchema);
-export default contact;
+
+module.exports = contact;

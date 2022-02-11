@@ -1,6 +1,6 @@
-import contactModel from "../models/Contact.js";
+const contactModel = require("../models/Contact.js");
 
-export const addContact = async (req, res) => {
+const addContact = async (req, res) => {
   var response = {
     errMsgs: {},
     data: {},
@@ -49,7 +49,7 @@ export const addContact = async (req, res) => {
     response = {
       ...response,
       errMsgs: {
-        ...errMsgs,
+        ...response.errMsgs,
         err: "Error : Undefined New Contact !",
       },
     };
@@ -58,7 +58,7 @@ export const addContact = async (req, res) => {
   return response;
 };
 
-export const deleteContact = async (req, res) => {
+const deleteContact = async (req, res) => {
   var response = {
     errMsgs: {},
     data: {},
@@ -89,7 +89,7 @@ export const deleteContact = async (req, res) => {
   return response;
 };
 
-export const updateContact = async (req, res) => {
+const updateContact = async (req, res) => {
   var response = {
     errMsgs: {},
     data: {},
@@ -152,7 +152,7 @@ export const updateContact = async (req, res) => {
   return response;
 };
 
-export const allContacts = async (req, res) => {
+const allContacts = async (req, res) => {
   var response = {
     errMsgs: {},
     data: {},
@@ -162,4 +162,11 @@ export const allContacts = async (req, res) => {
   const contacts = await contactModel.find();
   response = contacts;
   return response;
+};
+
+module.exports = {
+  addContact,
+  deleteContact,
+  updateContact,
+  allContacts
 };

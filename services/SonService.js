@@ -1,6 +1,6 @@
-import contactModel from "../models/Contact.js";
+const contactModel = require("../models/Contact.js");
 
-export const allSons = async (req, res) => {
+const allSons = async (req, res) => {
   var response = {
     errMsgs: {},
     data: {},
@@ -11,3 +11,5 @@ export const allSons = async (req, res) => {
   response = sons;
   return response;
 };
+
+module.exports = allSons;

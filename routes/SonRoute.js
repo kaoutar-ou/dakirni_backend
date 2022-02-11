@@ -1,9 +1,9 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   allSons,
-} from "../controllers/SonController.js";
+} = require("../controllers/SonController.js");
 
 const router = express.Router();
 router.get("/allsons", allSons);
 
-export default router;
+module.exports = router;

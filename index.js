@@ -1,9 +1,10 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import contactRoute from "./routes/ContactRoute.js";
-import sonRoute from "./routes/SonRoute.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const contactRoute = require("./routes/ContactRoute.js");
+const sonRoute = require("./routes/SonRoute.js");
+const safeZoneRoute = require("./routes/SafeZoneRoute.js");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -24,6 +25,7 @@ db.once("open", () => {
 
 app.use("/contacts", contactRoute);
 app.use("/sons", sonRoute);
+app.use("/safezone", safeZoneRoute);
 
 // app.get("/", (req, res) => {
 //   // res.send("Hello");

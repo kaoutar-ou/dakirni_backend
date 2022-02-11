@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "nodeapp1",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
