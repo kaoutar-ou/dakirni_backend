@@ -37,6 +37,10 @@ const setSafeZone = async (req, res) => {
             safezone_lng: safeZone.red.lng,
         });
 
+        await safeZoneModel.deleteOne({ safezone_type : "green" });
+        await safeZoneModel.deleteOne({ safezone_type : "yellow" });
+        await safeZoneModel.deleteOne({ safezone_type : "red" });
+
         if (green.save() && yellow.save() && red.save()) {
           response = {
             ...response,
