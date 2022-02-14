@@ -90,11 +90,12 @@ const setSafeZone = async (req, res) => {
       data: {},
     };
     
+    let fatherKey = req.body.fatherKey;
     console.log("get safe zone");
 
-    const green = await safeZoneModel.findOne({'safezone_type': "green"});
-    const yellow = await safeZoneModel.findOne({'safezone_type': "yellow"});
-    const red = await safeZoneModel.findOne({'safezone_type': "red"});
+    const green = await safeZoneModel.findOne({'safezone_type': "green", "fatherKey": fatherKey});
+    const yellow = await safeZoneModel.findOne({'safezone_type': "yellow", "fatherKey": fatherKey});
+    const red = await safeZoneModel.findOne({'safezone_type': "red", "fatherKey": fatherKey});
 
     response = {
         green,

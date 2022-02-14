@@ -14,6 +14,10 @@ const safeZoneSchema = mongoose.Schema(
       type: Array,
       required: false,
     },
+    fatherKey: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );
