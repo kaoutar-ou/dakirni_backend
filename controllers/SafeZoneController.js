@@ -1,4 +1,5 @@
 const SafeZoneService = require("../services/SafeZoneService.js");
+const safeZoneModel = require("../models/SafeZone");
 
 const setSafeZone = async (req, res) => {
   const response = await SafeZoneService.setSafeZone(req, res);
@@ -11,5 +12,9 @@ const getSafeZone = async (req, res) => {
     if (response?.errMsgs) return res.status(500).json(response);
     else return res.status(200).json(response);
   };
-
-module.exports = { setSafeZone, getSafeZone };
+const getsafezoneAndroid=async (req,res)=>{
+    const response=await safeZoneModel.find();
+    console.log(response);
+    res.send(response);
+}
+module.exports = { setSafeZone, getSafeZone,getsafezoneAndroid };
