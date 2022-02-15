@@ -16,7 +16,7 @@ const safeZoneSchema = mongoose.Schema(
     },
     fatherKey: {
       type: String,
-      required: false,
+      required: true,
     },
   },
   { timestamps: true }

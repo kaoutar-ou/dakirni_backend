@@ -13,7 +13,7 @@ const getSafeZone = async (req, res) => {
     else return res.status(200).json(response);
   };
 const getsafezoneAndroid=async (req,res)=>{
-    const response=await safeZoneModel.find();
+    const response=await safeZoneModel.find({"fatherKey": req.params.fatherKey});
     console.log(response);
     res.send(response);
 }

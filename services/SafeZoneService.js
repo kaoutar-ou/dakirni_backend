@@ -11,11 +11,12 @@ const setSafeZone = async (req, res) => {
     
     // console.log("req.body");
     // console.log(req.body);
-    console.log("safeZone");
-    console.log(safeZone);
-
-    console.log("safeZone.green.lat");
-    console.log(safeZone.green.lat);
+    // console.log("safeZone");
+    // console.log(safeZone);
+    //
+    // console.log("safeZone.green.lat");
+    // console.log(safeZone.green.lat);
+    console.log("afin",safeZone.fatherKey);
     // console.log("req 2 : "+JSON.stringify(req.body));
     if (safeZone != null) {
       try {
@@ -92,6 +93,7 @@ const setSafeZone = async (req, res) => {
     
     let fatherKey = req.body.fatherKey;
     console.log("get safe zone");
+      console.log("afin",fatherKey);
 
     const green = await safeZoneModel.findOne({'safezone_type': "green", "fatherKey": fatherKey});
     const yellow = await safeZoneModel.findOne({'safezone_type': "yellow", "fatherKey": fatherKey});
