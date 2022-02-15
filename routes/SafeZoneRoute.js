@@ -8,7 +8,7 @@ const {
 
 const router = express.Router();
 router.post("/setsafezone", setSafeZone);
-router.get("/getsafezone", getSafeZone);
+router.post("/getsafezone", getSafeZone);
 router.get("/getsafezoneAndroid/:fatherKey",cors(),getsafezoneAndroid);
 
 module.exports = router;

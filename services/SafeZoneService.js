@@ -5,42 +5,36 @@ const setSafeZone = async (req, res) => {
       data: {},
     };
     console.log("set safe zone");
-    // console.log(req);
     var safeZone = req.body.safezone;
-    // console.log("req : " + req.body);
-    
-    // console.log("req.body");
-    // console.log(req.body);
-    // console.log("safeZone");
-    // console.log(safeZone);
-    //
-    // console.log("safeZone.green.lat");
-    // console.log(safeZone.green.lat);
-    console.log("afin",safeZone.fatherKey);
-    // console.log("req 2 : "+JSON.stringify(req.body));
+    let fatherKey = safeZone.fatherKey;
+    console.log("afin",fatherKey);
+    // console.log("afin",fatherKey.fatherKey);
     if (safeZone != null) {
       try {
         var green = new safeZoneModel({
             safezone_type: "green",
             safezone_lat: safeZone.green.lat,
             safezone_lng: safeZone.green.lng,
+            fatherKey
         });
 
         var yellow = new safeZoneModel({
             safezone_type: "yellow",
             safezone_lat: safeZone.yellow.lat,
             safezone_lng: safeZone.yellow.lng,
+            fatherKey
         });
 
         var red = new safeZoneModel({
             safezone_type: "red",
             safezone_lat: safeZone.red.lat,
             safezone_lng: safeZone.red.lng,
+            fatherKey
         });
 
-        await safeZoneModel.deleteOne({ safezone_type : "green" });
-        await safeZoneModel.deleteOne({ safezone_type : "yellow" });
-        await safeZoneModel.deleteOne({ safezone_type : "red" });
+        await safeZoneModel.deleteOne({ safezone_type : "green", fatherKey : fatherKey });
+        await safeZoneModel.deleteOne({ safezone_type : "yellow", fatherKey : fatherKey });
+        await safeZoneModel.deleteOne({ safezone_type : "red", fatherKey : fatherKey });
 
         if (green.save() && yellow.save() && red.save()) {
           response = {
@@ -81,8 +75,8 @@ const setSafeZone = async (req, res) => {
       };
     }
   
-    console.log("response");
-    console.log(response);
+    // console.log("response");
+    // console.log(response);
     return response;
   };
 
@@ -92,8 +86,9 @@ const setSafeZone = async (req, res) => {
     };
     
     let fatherKey = req.body.fatherKey;
-    console.log("get safe zone");
-      console.log("afin",fatherKey);
+    // console.log("req.body", req);
+    // console.log("get safe zone");
+    //   console.log("afin",req.body);
 
     const green = await safeZoneModel.findOne({'safezone_type': "green", "fatherKey": fatherKey});
     const yellow = await safeZoneModel.findOne({'safezone_type': "yellow", "fatherKey": fatherKey});
